@@ -1,3 +1,8 @@
+.HalfW {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+}
 .App {
   text-align: center;
 }

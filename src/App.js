@@ -63,12 +63,12 @@ export default class App extends Component {
         callback={this.toggleTodo} />)
 
   render = () =>
-    <div>
+    <div className="container-fluid p-6">
       <TodoBanner name={this.state.userName}
         tasks={this.state.todoItems} />
       <div className="container-fluid">
         <TodoCreator callback={this.createNewTodo} />
-        <table className="table table-striped table-bordered">
+        <table className="table text-center table-striped table-bordered">
           <thead>
             <tr><th>Description</th><th>Done</th></tr>
           </thead>
@@ -91,5 +91,5 @@ export default class App extends Component {
           </table>
         }
       </div>
-    </div>;
+    </div >;
 }
