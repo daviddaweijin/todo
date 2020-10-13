@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { TodoBanner } from "./TodoBanner";
 import { TodoCreator } from "./TodoCreator";
 import { TodoRow } from "./TodoRow";
 import { VisibilityControl } from "./VisibilityControl";
 
-export default class App extends Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
@@ -63,33 +62,38 @@ export default class App extends Component {
         callback={this.toggleTodo} />)
 
   render = () =>
-    <div className="container-fluid p-6">
-      <TodoBanner name={this.state.userName}
-        tasks={this.state.todoItems} />
-      <div className="container-fluid">
-        <TodoCreator callback={this.createNewTodo} />
-        <table className="table text-center table-striped table-bordered">
-          <thead>
-            <tr><th>Description</th><th>Done</th></tr>
-          </thead>
-          <tbody>{this.todoTableRows(false)}</tbody>
-        </table>
-        <div className="bg-secondary text-white text-center p-2">
-          <VisibilityControl description="Completed Tasks"
-            isChecked={this.state.showCompleted}
-            callback={(checked) => {
-              this.setState({ showCompleted: checked })
-            }
-            } />
-        </div>
-        {this.state.showCompleted &&
-          <table className="table table-striped table-bordered">
+    <div>
+      <div className="container-fluid p-6">
+        <TodoBanner name={this.state.userName}
+          tasks={this.state.todoItems} />
+        <div className="container-fluid">
+          <TodoCreator callback={this.createNewTodo} />
+          <table className="table text-center table-striped table-bordered">
             <thead>
               <tr><th>Description</th><th>Done</th></tr>
             </thead>
-            <tbody>{this.todoTableRows(true)}</tbody>
+            <tbody>{this.todoTableRows(false)}</tbody>
           </table>
-        }
+          <div className="bg-secondary text-white text-center p-2">
+            <VisibilityControl description="Completed Tasks"
+              isChecked={this.state.showCompleted}
+              callback={(checked) => {
+                this.setState({ showCompleted: checked })
+              }
+              } />
+          </div>
+          {this.state.showCompleted &&
+            <table className="table table-striped table-bordered">
+              <thead>
+                <tr><th>Description</th><th>Done</th></tr>
+              </thead>
+              <tbody>{this.todoTableRows(true)}</tbody>
+            </table>
+          }
+        </div>
       </div>
     </div >;
 }
+
+
+export default App
