@@ -9,7 +9,7 @@ export class TodoCreator extends Component {
     }
     createNewTodo = () => {
         if (!this.state.newItemText) {
-            this.state.warning = "please input something"
+            this.setState({ warning: "please input something" });
         }
         this.props.callback(this.state.newItemText);
         this.setState({ newItemText: "" });
